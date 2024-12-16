@@ -4,7 +4,7 @@ import React from 'react';
 const SobreNosotros = () => {
   return (
     <main>
-      <section id="sobre-nosotros">
+      
         <h1>Sobre Nosotros</h1>
         <p>
           En PonteTech, estamos dedicados a proporcionar la mejor tecnología a nuestros clientes. Desde nuestra
@@ -25,9 +25,9 @@ const SobreNosotros = () => {
           Gracias por elegir PonteTech como tu tienda de confianza para todas tus necesidades tecnológicas.
           ¡Esperamos seguir sirviéndote con productos de calidad y un servicio inigualable!
         </p>
-      </section>
+      
 
-      <section id="ubicacion">
+      
         <h3>Ubicación</h3>
         <p>
           Nos encontramos en el corazón de la ciudad para ofrecerte fácil acceso a lo último en tecnología.
@@ -47,9 +47,6 @@ const SobreNosotros = () => {
   loading="lazy"
 ></iframe>
         </div>
-      </section>
-
-      <section id="horarios">
         <h2>Horarios</h2>
         <p>Nuestros horarios de atención son:</p>
         <ul>
@@ -57,7 +54,6 @@ const SobreNosotros = () => {
           <li><strong>Sábado:</strong> 10:00 AM - 6:00 PM</li>
           <li><strong>Domingo:</strong> Cerrado</li>
         </ul>
-      </section>
     </main>
   );
 };

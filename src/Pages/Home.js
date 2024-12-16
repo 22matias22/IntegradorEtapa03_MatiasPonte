@@ -126,8 +126,8 @@ const Home = ({ carrito, setCarrito }) => {
         />
         <Product 
           title="AirPods (2nd generation)"
-          imgSrc="https://bigpoint.com.ar/wp-content/uploads/2023/07/Apple-Airpods-2da.-Generacion.jpg"
-          price="900 usd"
+          imgSrc="https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6084/6084400cv15d.jpg"
+          price="150 usd"
           description="Los AirPods de segunda generación ofrecen acceso a Siri con solo tu voz, y hasta 5 horas de
                     reproducción con una sola carga."
           agregarAlCarrito={agregarAlCarrito}
