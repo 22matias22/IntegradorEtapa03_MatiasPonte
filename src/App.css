@@ -1,0 +1,166 @@
+.redes img {
+  margin-right: 30px; 
+}
+
+.redes img:last-child {
+  margin-right: 0; 
+}
+
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+}
+
+header, footer {
+  background-color: #333;
+  color: white;
+  padding: 10px;
+  text-align: center;
+  border-radius: 10px;
+}
+footer div {
+  display: inline-block;
+  padding: 10px;
+  margin: 15px;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between; 
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.logo img {
+  height: 120px; 
+}
+
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.menu-toggle .bar {
+  width: 25px;
+  height: 3px;
+  background-color: white;
+  margin: 3px 0;
+  transition: all 0.3s;
+}
+
+nav ul {
+  display: flex;
+  justify-content: flex-end; 
+  list-style: none;
+  padding: 0;
+}
+
+nav ul li {
+  margin: 0 10px;
+}
+
+nav ul li a {
+  color: white;
+  text-decoration: none;
+  padding: 10px 20px;
+  font-size: 18px;
+}
+
+nav ul li a:hover {
+  background-color: #555;
+  border-radius: 5px;
+}
+
+@media (max-width: 768px) {
+  .menu-toggle {
+      display: flex;
+  }
+
+  nav ul {
+      display: none;
+      width: 100%;
+      flex-direction: column;
+      text-align: center;
+  }
+
+  nav ul.showing {
+      display: flex;
+  }
+
+  nav ul li {
+      margin: 10px 0;
+  }
+}
+
+main {
+  text-align: center;
+  padding: 10px;
+}
+
+h1 {
+  text-align: center;
+  color: #333;
+}
+.botonBusqueda {
+  display: flex;
+  justify-content: flex-end;
+padding: 15px;
+}
+
+.product {
+  display: inline-block;
+  background-color: #fff;
+  border: 5px solid #ddd;
+  border-radius: 10px;
+  margin: 20px auto;
+  padding: 20px;
+  width: 500px; 
+  height: 600px; 
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.15s;
+  text-align: center; 
+}
+
+footer svg:hover {
+  transform: scale(1.3);
+}
+
+.product:hover {
+  transform: scale(1.1);
+}
+
+.product img {
+  width: 250px;
+  height: 250px;
+  border-radius: 10px;
+}
+
+.product h2 {
+  color: #333;
+}
+
+.product h3 {
+  color: red;
+}
+
+.product p {
+  color: #333;
+}
+.botonBusqueda{
+  justify-content: center;
+  scale: 1.5;
+}
+button {
+  display: inline-block;
+  padding: 8px 22px;
+  background-color: #3498db; 
+  color: white;
+  border: none;
+  border-radius: 5px;
+}
+button:hover {
+  background-color: rgba(60, 110, 141, 0.559);
+  border-radius: 5px; 
+}
