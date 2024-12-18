@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 import '../css/carrito.css';
 
 const Carrito = ({ isOpen, toggleModal, carrito, setCarrito }) => {
-  // Cerrar el modal con la tecla "Esc"
   useEffect(() => {
     const handleEsc = (event) => {
       if (event.key === "Escape") {
@@ -35,10 +34,28 @@ const Carrito = ({ isOpen, toggleModal, carrito, setCarrito }) => {
     localStorage.setItem("carrito", JSON.stringify(nuevoCarrito));
   };
 
-  // Calcular el total general sumando los subtotales de todos los productos
   const totalCarrito = carrito.reduce((total, producto) => {
     return total + parseFloat(producto.price) * producto.cantidad;
   }, 0);
+
+  const handlePago = async () => {
+    const response = await fetch('/api/pago', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ items: carrito }),
+    });
+
+    const data = await response.json();
+
+    if (data.id) {
+      const mp = new window.MercadoPago("Tlink.mercadopago.com.ar/pontech", { locale: "es-AR" });
+      mp.checkout({
+        preference: { id: data.id },
+      });
+    } else {
+      alert('Error al generar el pago');
+    }
+  };
 
   return isOpen ? (
     <div className="modal-container">
@@ -56,7 +73,6 @@ const Carrito = ({ isOpen, toggleModal, carrito, setCarrito }) => {
                   <p>Precio: {producto.price} USD</p>
                   <p>Cantidad: {producto.cantidad}</p>
                   <p>Subtotal: {(parseFloat(producto.price) * producto.cantidad).toFixed(2)} USD</p>
-
                   <button onClick={() => handleRestar(index)}>-</button>
                   <span>{producto.cantidad}</span>
                   <button onClick={() => handleSumar(index)}>+</button>
@@ -64,8 +80,10 @@ const Carrito = ({ isOpen, toggleModal, carrito, setCarrito }) => {
                 </li>
               ))}
             </ul>
-            {/* Mostrar el total general */}
             <h3>Total: {totalCarrito.toFixed(2)} USD</h3>
+
+            {/* Botón de Mercado Pago */}
+            <button className="pago-btn" onClick={handlePago}>Pagar con Mercado Pago</button>
           </>
         ) : (
           <p>No tienes productos en el carrito.</p>
