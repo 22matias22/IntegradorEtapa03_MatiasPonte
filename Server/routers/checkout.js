@@ -1,36 +1,33 @@
-const express = require('express');
 const mercadopago = require('mercadopago');
-const router = express.Router();
 
 // Configurar credenciales
 mercadopago.configure({
-    access_token: 'link.mercadopago.com.ar/pontech' 
+  access_token: 'APP_USR-1743559732416992-121719-8ca06de1cc3776367cf7ecc750c689e6-150971411', 
 });
 
-// Ruta para crear la preferencia de pago
-router.post('/api/pago', async (req, res) => {
-    try {
-        const { items } = req.body; // Los productos enviados desde el frontend
+app.post('/api/pago', async (req, res) => {
+  try {
+    const items = req.body.items.map(item => ({
+      title: item.title,
+      quantity: item.cantidad,
+      currency_id: 'USD',
+      unit_price: parseFloat(item.price),
+    }));
 
-        const preference = {
-            items: items.map(item => ({
-                title: item.title,
-                unit_price: item.price,
-                quantity: item.quantity
-            })),
-            back_urls: {
-                success: "http://localhost:3000/success",
-                failure: "http://localhost:3000/failure",
-                pending: "http://localhost:3000/pending"
-            },
-            auto_return: "approved"
-        };
+    const preference = {
+      items,
+      back_urls: {
+        success: 'https://tu-sitio.com/success',
+        failure: 'https://tu-sitio.com/failure',
+        pending: 'https://tu-sitio.com/pending',
+      },
+      auto_return: 'approved',
+    };
 
-        const response = await mercadopago.preferences.create(preference);
-        res.json({ id: response.body.id }); // Enviar ID de la preferencia al frontend
-    } catch (error) {
-        res.status(500).json({ error: error.message });
-    }
+    const response = await mercadopago.preferences.create(preference);
+    res.json({ id: response.body.id });
+  } catch (error) {
+    console.error('Error al crear preferencia:', error);
+    res.status(500).send('Error al procesar el pago');
+  }
 });
-
-module.exports = router;

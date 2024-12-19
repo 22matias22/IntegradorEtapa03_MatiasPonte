@@ -89,7 +89,7 @@ const Contacto = () => {
             onChange={handleChange}
             required
           >
-            <option value="">Seleccionar producto</option> {/* Opción al comienzo */}
+            <option value="">Seleccionar producto</option>
             <optgroup>
               <option value="iphone_15">iPhone 15</option>
               <option value="iphone_14">iPhone 14</option>

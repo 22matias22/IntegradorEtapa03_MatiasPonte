@@ -27,10 +27,8 @@ function App() {
   return (
     <Router>
       <div className="App">
-        {/* Pasar el carrito y setCarrito al Header */}
         <Header carrito={carrito} setCarrito={setCarrito} />
         <Routes>
-          {/* Pasar  el carrito y setCarrito al Home */}
           <Route path="/" element={<Home carrito={carrito} setCarrito={setCarrito} />} />
           <Route path="/alta" element={<Alta />} />
           <Route path="/contacto" element={<Contacto />} />
